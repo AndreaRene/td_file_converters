@@ -1,6 +1,6 @@
 # File converters for TarotDeck
 
-This repository houses file converters and the converted files for the TarotDeck project.
+This repository houses file converters for the TarotDeck project.
 
 ## UUID Script
 
