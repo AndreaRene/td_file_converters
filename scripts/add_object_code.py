@@ -10,9 +10,8 @@ def add_object_code_to_json_objects(root_dir):
             if filename.endswith('.json'):
                 file_path = os.path.join(root, filename)
                 object_code = extract_object_code(filename)
-                if object_code is not None:
-                    updated_count = update_json_objects(file_path, object_code)
-                    total_updated += updated_count
+                updated_count = update_json_objects(file_path, object_code)
+                total_updated += updated_count
     
     print(f"Total 'objectCode' fields updated or added: {total_updated}")
 
@@ -38,9 +37,7 @@ def update_json_objects(file_path, object_code):
         json.dump(data, file, indent=2)
         file.truncate()
 
-        if updated_count > 0:
-            print(f"Updated {updated_count} 'objectCode' fields in {file_path}")
-    
+    print(f"Object Codes added to {updated_count} objects in {file_path}")
     return updated_count
 
 if __name__ == "__main__":
