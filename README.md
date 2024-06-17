@@ -11,12 +11,12 @@ The UUID script is a tool for adding unique identifiers (UUIDs) to objects withi
 To use the UUID script, follow these steps:
 
 1. Ensure Python 3 is installed on your system. You can download Python from [python.org](https://www.python.org/downloads/).
-2. Place the `add_uuid.py` script in a directory named `scripts`.
-3. Create a directory named `data` in the root of your project.
-4. Place the JSON files that you want to process in the `data` directory.
-5. Open a terminal or command prompt.
-6. Navigate to the `scripts` directory in your project.
-7. Run the script with the following command:
+2. Clone the repository.
+3. Creata a directory named `uuids` in the `data` directory.
+4. Add the JSON files(that need uuids added to objects) to the `uuids` directory.
+6. Open a terminal or command prompt.
+7. Navigate to the `scripts` directory in your project.
+8. Run the script with the following command:
 
 ```bash
 python3 add_uuid.py
