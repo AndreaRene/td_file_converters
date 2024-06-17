@@ -41,7 +41,7 @@ Running the UUID script will result in the following changes to `data.json`:
 
 ## Object Code Script
 
-The UUID script is a tool for adding object code identifiers to objects within JSON files. It ensures that each object has a unique object code without modifying existing codes. The Object Code script reads JSON files from a specified directory and adds codes to objects that do not already have an "objectCode" field. It leaves existing "objectCode" fields unchanged. The scripts assumes a naming convention of `filePrefixObjects.json`. It will take the file prefix and place it into an object code field converting it to lowercase.
+The Object Code script is a tool for adding object code identifiers to objects within JSON files. It ensures that each object has an object code. The Object Code script reads JSON files from a specified directory and adds the field to objects that do not already have an "objectCode" field. It reads objects that do have an "objectCode" field and ensure that the value is correct. If it is not, it will change the object code apropriately. The scripts assumes a naming convention of `filePrefixObjects.json`. It will take the file prefix and place it into an object code field converting it to lowercase.
 
 ### Usage
 
