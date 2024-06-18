@@ -19,7 +19,7 @@ def extract_object_code(filename):
     # Extract the value from the filename before 'Objects' in lowercase
     parts = filename.split('Objects', 1)
     if len(parts) > 1:
-        object_code = parts[0].lower()
+        object_code = parts[0].upper()
         return object_code
     return None
 
