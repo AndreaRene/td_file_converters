@@ -1,54 +1,37 @@
-import os
 import json
+import os
+import uuid
 
-def add_object_code_to_json_objects(root_dir):
-    data_dir = os.path.join(root_dir, 'data', 'object_codes')
-    total_updated = 0
-    
-    for root, dirs, files in os.walk(data_dir):
-        for filename in files:
-            if filename.endswith('.json'):
-                file_path = os.path.join(root, filename)
-                object_code = extract_object_code(filename)
-                if object_code is not None:
-                    updated_count = update_json_objects(file_path, object_code)
-                    total_updated += updated_count
-    
-    print(f"Total 'objectCode' fields updated or added: {total_updated}")
-
-def extract_object_code(filename):
-    # Extract the value from the filename before 'Objects' in lowercase
-    parts = filename.split('Objects', 1)
-    if len(parts) > 1:
-        object_code = parts[0].lower()
-        return object_code
-    return None
-
-def update_json_objects(file_path, object_code):
-    updated_count = 0
-    
-    with open(file_path, 'r+') as file:
+def add_unique_ids_to_file(file_path):
+    with open(file_path, 'r') as file:
         data = json.load(file)
-        for item in data:
-            if 'objectCode' not in item or item['objectCode'] != object_code:
-                item['objectCode'] = object_code
-                updated_count += 1
-        
-        file.seek(0)
-        json.dump(data, file, indent=2)
-        file.truncate()
 
-        if updated_count > 0:
-            print(f"Updated {updated_count} 'objectCode' fields in {file_path}")
+    ids_added = 0
+
+    for item in data:
+        if 'id' not in item:
+            item['id'] = str(uuid.uuid4())
+            ids_added += 1
+
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=2)
+
+    print(f"Unique IDs added to {ids_added} objects in {file_path}")
+
+def process_directory(directory_path):
+    uuid_dir = os.path.join(directory_path, 'uuids')  # New directory path
     
-    return updated_count
+    for filename in os.listdir(uuid_dir):
+        file_path = os.path.join(uuid_dir, filename)
+        if filename.endswith('.json'):
+            add_unique_ids_to_file(file_path)
 
 if __name__ == "__main__":
-    # Get the current directory of the script
+    # Get the directory path of the script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     
-    # Navigate up to the root directory
-    root_directory = os.path.abspath(os.path.join(script_dir, '..'))
+    # Set the data directory path
+    data_dir = os.path.join(script_dir, '..', 'data')
     
-    # Call the function to add 'objectCode' field to JSON objects
-    add_object_code_to_json_objects(root_directory)
+    # Process the new data/uuid directory
+    process_directory(data_dir)
