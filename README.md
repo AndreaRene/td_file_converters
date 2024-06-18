@@ -14,9 +14,9 @@ To use the UUID script, follow these steps:
 2. Clone the repository.
 3. Creata a directory named `uuids` in the `data` directory.
 4. Add the JSON files(that need uuids added to objects) to the `uuids` directory.
-6. Open a terminal or command prompt.
-7. Navigate to the `scripts` directory in your project.
-8. Run the script with the following command:
+5. Open a terminal or command prompt.
+6. Navigate to the `scripts` directory in your project.
+7. Run the script with the following command:
 
 ```bash
 python3 add_uuid.py
@@ -51,9 +51,9 @@ To use the Object Code script, follow these steps:
 2. Clone the repository.
 3. Creata a directory named `object_codes` in the `data` directory.
 4. Add the JSON files(that need object codes added to objects) to the `object_codes` directory.
-6. Open a terminal or command prompt.
-7. Navigate to the `scripts` directory in your project.
-8. Run the script with the following command:
+5. Open a terminal or command prompt.
+6. Navigate to the `scripts` directory in your project.
+7. Run the script with the following command:
 
 ```bash
 python3 add_object_code.py
@@ -73,7 +73,6 @@ Running the Object Code script will result in the following changes to `dataObje
 [
   { "name": "Object 1", "objectCode": "data" },
   { "name": "Object 2", "objectCode": "data" },
-  { "name": "Object 3", "objectCode": "data"}
+  { "name": "Object 3", "objectCode": "data" }
 ]
 ```
-
