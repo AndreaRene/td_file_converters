@@ -2,7 +2,7 @@ import os
 import re
 
 # Define the base directory where the files were renamed
-base_directory = '/mnt/c/Users/onefo/projects/tarot/tarot_cards'  # Replace with your absolute path
+base_directory = '/your/file/path/here'  # Replace with your absolute path
 
 def rename_files(base_dir):
     base_dir = os.path.abspath(base_dir)  # Ensure it's an absolute path
