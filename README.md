@@ -1,6 +1,3 @@
-Got it. Here's the corrected README with the appropriate instructions about updating the path for the Rename File script:
-
-````markdown
 # File converters for TarotDeck
 
 This repository houses file converters for the TarotDeck project.
@@ -23,8 +20,6 @@ To use the UUID script, follow these steps:
 ```bash
 python3 add_uuid.py
 ```
-````
-
 ### Example
 
 Suppose we have a JSON file named `data.json` with the following contents:
@@ -138,6 +133,3 @@ tarot_cards/
 
 This script ensures that all filenames follow the desired pattern based on their directory structure and numeric values, and skips renaming files that already match the pattern.
 
-```
-
-```
