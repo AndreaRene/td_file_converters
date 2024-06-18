@@ -1,4 +1,4 @@
-# File converters for TarotDeck
+# File Converters for TarotDeck
 
 This repository houses file converters for the TarotDeck project.
 
@@ -20,6 +20,7 @@ To use the UUID script, follow these steps:
 ```bash
 python3 add_uuid.py
 ```
+
 ### Example
 
 Suppose we have a JSON file named `data.json` with the following contents:
@@ -58,23 +59,23 @@ python3 add_object_code.py
 
 ### Example
 
-Suppose we have a JSON file named `dataObjects.json` with the following contents:
+Suppose we have a JSON file named `itemsObjects.json` with the following contents:
 
 ```json
 [
-  { "name": "Object 1" },
-  { "name": "Object 2", "objectCode": "random-object-code" },
-  { "name": "Object 3", "objectCode": "data" }
+  { "name": "Item 1" },
+  { "name": "Item 2", "objectCode": "random-object-code" },
+  { "name": "Item 3", "objectCode": "items" }
 ]
 ```
 
-Running the Object Code script will result in the following changes to `dataObjects.json`:
+Running the Object Code script will result in the following changes to `itemsObjects.json`:
 
 ```json
 [
-  { "name": "Object 1", "objectCode": "data" },
-  { "name": "Object 2", "objectCode": "data" },
-  { "name": "Object 3", "objectCode": "data" }
+  { "name": "Item 1", "objectCode": "items" },
+  { "name": "Item 2", "objectCode": "items" },
+  { "name": "Item 3", "objectCode": "items" }
 ]
 ```
 
@@ -102,33 +103,83 @@ python3 rename_file.py
 Suppose we have files in a directory structure as follows:
 
 ```
-tarot_cards/
-  ├── EOTS/
-  │   ├── keys/
-  │   │   ├── 01_Offering_of_the_Damned.png
-  │   │   ├── 02_Another_File.png
-  │   └── cups/
-  │       ├── cups01.png
-  │       ├── cups02.png
-  └── cardbacks/
-      ├── 01cardback.png
-      ├── 02cardback.png
+items/
+  ├── THINGS/
+  │   ├── tools/
+  │   │   ├── 01_hammer.png
+  │   │   ├── 02_wrench.png
+  │   └── utensils/
+  │       ├── utensils01.png
+  │       ├── utensils02.png
+  └── images/
+      ├── 01image.png
+      ├── 02image.png
 ```
 
 Running the Rename File script will result in the following changes:
 
 ```
-tarot_cards/
-  ├── EOTS/
-  │   ├── keys/
-  │   │   ├── eots_keys_01.png
-  │   │   ├── eots_keys_02.png
-  │   └── cups/
-  │       ├── eots_cups_01.png
-  │       ├── eots_cups_02.png
-  └── cardbacks/
-      ├── tarot_cards_cardbacks_01.png
-      ├── tarot_cards_cardbacks_02.png
+items/
+  ├── THINGS/
+  │   ├── tools/
+  │   │   ├── things_tools_01.png
+  │   │   ├── things_tools_02.png
+  │   └── utensils/
+  │       ├── things_utensils_01.png
+  │       ├── things_utensils_02.png
+  └── images/
+      ├── items_images_01.png
+      ├── items_images_02.png
 ```
 
+## URL Script
 
+The URL script is a tool for adding or correcting image URLs in objects within JSON files. It constructs URLs based on the objectCode, suit, and number fields of each object, ensuring that each object has a correctly formatted URL.
+
+### Usage
+
+To use the URL script, follow these steps:
+
+1. Ensure Python 3 is installed on your system. You can download Python from [python.org](https://www.python.org/downloads/).
+2. Clone the repository.
+3. Add the JSON files (that need URLs added or corrected) to the `urls` directory.
+4. Open a terminal or command prompt.
+5. Navigate to the `scripts` directory in your project.
+6. Run the script with the following command:
+
+```bash
+python3 add_url.py
+```
+
+### Example
+
+Suppose we have a JSON file named `cards.json` with the following contents:
+
+```json
+[
+  {
+    "cardName": "The Brave Knight",
+    "number": 1,
+    "arcana": "Major",
+    "suit": "Swords",
+    "cardDescription": "Description of the card...",
+    "objectCode": "CARD"
+  }
+]
+```
+
+Running the URL script will result in the following changes to `cards.json`:
+
+```json
+[
+  {
+    "cardName": "The Brave Knight",
+    "number": 1,
+    "arcana": "Major",
+    "suit": "Swords",
+    "cardDescription": "Description of the card...",
+    "objectCode": "CARD",
+    "imageUrl": "https://your-bucket-name.s3.your-region.amazonaws.com/CARD/swords/card_swords_01.jpg"
+  }
+]
+```
