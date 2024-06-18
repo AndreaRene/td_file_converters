@@ -16,7 +16,7 @@ def add_object_code_to_json_objects(root_dir):
     print(f"Total 'objectCode' fields updated or added: {total_updated}")
 
 def extract_object_code(filename):
-    # Extract the value from the filename before 'Objects' in lowercase
+    # Extract the value from the filename before 'Objects' in uppercase
     parts = filename.split('Objects', 1)
     if len(parts) > 1:
         object_code = parts[0].upper()
