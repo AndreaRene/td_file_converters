@@ -131,5 +131,4 @@ tarot_cards/
       ├── tarot_cards_cardbacks_02.png
 ```
 
-This script ensures that all filenames follow the desired pattern based on their directory structure and numeric values, and skips renaming files that already match the pattern.
 
