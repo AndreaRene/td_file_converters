@@ -183,3 +183,71 @@ Running the URL script will result in the following changes to `cards.json`:
   }
 ]
 ```
+
+## Add Cards Script
+
+The Add Cards script is a tool for adding card IDs to the corresponding deck objects within a JSON file. It ensures that each deck object contains an array of card IDs based on the matching `objectCode` from the card files.
+
+### Usage
+
+To use the Add Cards script, follow these steps:
+
+1. Ensure Python 3 is installed on your system. You can download Python from [python.org](https://www.python.org/downloads/).
+2. Clone the repository.
+3. Add the JSON files (deck and card files) to the same directory.
+4. Open a terminal or command prompt.
+5. Navigate to the `scripts` directory in your project.
+6. Run the script with the following command:
+
+```bash
+python3 add_cards.py
+```
+
+### Example
+
+Suppose we have a deck file named `DECK_sample.json` with the following contents:
+
+```json
+[{ "deckId": "sample", "name": "Sample Deck" }]
+```
+
+And card files named `cards1.json`, `cards2.json` with the following contents:
+
+`cards1.json`:
+
+```json
+[
+  {
+    "id": "8d253997-74e5-40d3-bcdc-c683f3be32c0",
+    "objectCode": "sample",
+    "name": "Card 1"
+  }
+]
+```
+
+`cards2.json`:
+
+```json
+[
+  {
+    "id": "8a373c2d-1f4a-456a-a69a-2a5a2b056b57",
+    "objectCode": "sample",
+    "name": "Card 2"
+  }
+]
+```
+
+Running the Add Cards script will result in the following changes to `DECK_sample.json`:
+
+```json
+[
+  {
+    "deckId": "sample",
+    "name": "Sample Deck",
+    "cardIds": [
+      "8d253997-74e5-40d3-bcdc-c683f3be32c0",
+      "8a373c2d-1f4a-456a-a69a-2a5a2b056b57"
+    ]
+  }
+]
+```
