@@ -251,3 +251,47 @@ Running the Add Cards script will result in the following changes to `DECK_sampl
   }
 ]
 ```
+
+## Remove `imageFileName` Field Script
+
+The Remove `imageFileName` Field script is designed to remove the `imageFileName` field from all JSON files in a specified directory. This helps to clean up data by removing unnecessary fields from the objects.
+
+### Usage
+
+To use the Remove `imageFileName` Field script, follow these steps:
+
+1. Ensure Python 3 is installed on your system. You can download Python from [python.org](https://www.python.org/downloads/).
+2. Clone the repository.
+3. Add the JSON files (that need the `imageFileName` field removed) to the `rm_img_file` directory.
+4. Open a terminal or command prompt.
+5. Navigate to the `scripts` directory in your project.
+6. Run the script with the following command:
+
+```bash
+python3 rm_image.py
+```
+
+### Example
+
+Suppose we have a JSON file named `cards.json` with the following contents:
+
+```json
+[
+  {
+    "cardName": "The Fool",
+    "imageFileName": "the_fool.png",
+    "description": "The Fool represents new beginnings."
+  }
+]
+```
+
+After running the script, the JSON file will be:
+
+```json
+[
+  {
+    "cardName": "The Fool",
+    "description": "The Fool represents new beginnings."
+  }
+]
+```
