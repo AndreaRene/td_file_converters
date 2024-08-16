@@ -1,16 +1,21 @@
 import json
 import os
 
-# Define the directory path containing the JSON files
-files_path = '../data/rm_img_file/'
+# Define the input and output directory paths
+input_dir = os.path.join(os.path.dirname(__file__), '../data/rm_img_file')
+output_dir = os.path.join(os.path.dirname(__file__), '../output/rm_img_file')
 
-# Iterate over all JSON files in the directory
-for filename in os.listdir(files_path):
+# Ensure the output directory exists
+os.makedirs(output_dir, exist_ok=True)
+
+# Iterate over all JSON files in the input directory
+for filename in os.listdir(input_dir):
     if filename.endswith('.json'):
-        file_path = os.path.join(files_path, filename)
+        input_file_path = os.path.join(input_dir, filename)
+        output_file_path = os.path.join(output_dir, filename)
         
         # Load the JSON file
-        with open(file_path, 'r') as file:
+        with open(input_file_path, 'r') as file:
             data = json.load(file)
         
         # Check if data is a list or a single dictionary
@@ -24,8 +29,8 @@ for filename in os.listdir(files_path):
             if 'imageFileName' in data:
                 del data['imageFileName']
         
-        # Save the updated JSON back to the file
-        with open(file_path, 'w') as file:
+        # Save the updated JSON to the output file
+        with open(output_file_path, 'w') as file:
             json.dump(data, file, indent=4)
 
 print("All files updated successfully.")
